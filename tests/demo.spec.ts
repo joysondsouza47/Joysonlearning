@@ -3,6 +3,9 @@ import {test,expect,Locator} from "@playwright/test"
 
 test("new title", async({page})=>{
 
-console.log("Hello, World!!!!");
+    await page.goto("https://demo.opencart.com/")
+    await page.waitForTimeout(10000);
+
+    console.log("Hello, World!!!!");
 
 })
