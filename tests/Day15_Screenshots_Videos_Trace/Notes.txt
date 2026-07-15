@@ -1,0 +1,37 @@
+Capture the videos - code
+Capture the screenshots - code
+Capture the trace - code
+
+Auto retry  ( Re-run)
+--------
+
+Pre-requisite:
+-------
+To achieving Auto_retry in playwright , we need to install additional plugin.
+	
+pytest-rerunfailures 
+
+pip install rerunfailures
+
+
+
+
+Flaky tests - some times will fail/pass
+
+
+1)   failed ---> passed-->failed -->passed     ( Flaky tests)
+
+
+3
+
+
+passed --> yes
+failed ---> yes
+failed --->yes
+failed ----> no
+
+
+pytest day32/test_flaky.py --headed --reruns 3 --reruns-delay 2
+
+
+
