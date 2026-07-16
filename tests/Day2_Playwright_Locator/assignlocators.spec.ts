@@ -2,11 +2,16 @@
 /* 
 // 1.page.getByAltText() to locate an element, usually image, by its text alternative. */
 
-import{test,expect,Locator} from "@playwright/test"  ;
+import { test, expect, Locator } from "@playwright/test";
+import * as path from 'path';
+import { pathToFileURL } from 'url';
 
-test( "Verify Playwright Locators on HTML Page", async ({page})=>{
+test("Verify Playwright Locators on HTML Page", async ({ page }) => {
 
-await page.goto("http://127.0.0.1:5500/tests/app.html") ;
+    const absolutePath = path.resolve(__dirname, 'app.html');
+    const fileUrl = pathToFileURL(absolutePath).href;
+
+    await page.goto(fileUrl);
 
 const logo:Locator = page.getByAltText("logo image");
 await expect(logo).toBeVisible();
@@ -65,5 +70,7 @@ await page.getByTestId("nav-home").click();
 await page.getByTestId("nav-products").click();
 await page.getByTestId("nav-contact").click();
 
+
+await page.waitForTimeout(5000);
 })
 

@@ -48,9 +48,15 @@ test("Verify CSS Locators",async ({page})=>{
 
     //tag.class[attribute=value]
     //await page.locator("input.search-box-text[value='Search store']").fill("T-Shirts");
+    //await page.locator(".search-box-text[value='Search store']").type("T-Shirts"); //type is deprecated
     await page.locator(".search-box-text[value='Search store']").fill("T-Shirts");
 
+    const searchbutton = page.locator('input.button-1.search-box-button');
 
+    await searchbutton.click();
+
+    const resultmessage = await page.locator('strong.result').innerText();
+    console.log(resultmessage);
     await page.waitForTimeout(5000); 
 
 })

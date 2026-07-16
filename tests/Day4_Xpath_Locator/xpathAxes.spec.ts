@@ -11,7 +11,7 @@ await expect(germanyCell).toHaveText('Germany');
 
 // 2. parent axis - Get parent <tr> of the "Germany" cell
   
-const parentRow:Locator=page.locator("//td[text()='Germany']/parent::tr")
+const parentRow:Locator=page.locator("     /parent::tr")
 await expect(parentRow).toContainText("Maria Anders");
 //await expect(parentRow).toContainText("Alfreds Futterkiste Maria Anders Germany"); //working
 //console.log(await parentRow.textContent())

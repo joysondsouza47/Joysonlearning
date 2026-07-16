@@ -26,6 +26,13 @@ test('Built-in Locators', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
 
   // page.getByText()
-  await expect(page.getByText("manda user")).toBeVisible(); //user can be changed. Please check manually once.
+  //await expect(page.getByText("manda user")).toBeVisible(); //user can be changed. Please check manually once.
+
+
+  const admin = page.getByText('Admin', { exact: true });
+  await admin.click();
+
+  await page.waitForTimeout(1000);
+
 
 });
