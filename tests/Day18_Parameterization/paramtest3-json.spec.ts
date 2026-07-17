@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 //Reading data from json
-const jsonPath="testdata/data.json";
+const jsonPath="tests/Day18_Parameterization/testdata/data.json";
 const loginData:any=JSON.parse(fs.readFileSync(jsonPath,'utf-8'));
 
 //main test

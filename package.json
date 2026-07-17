@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "playwright": "^1.61.1"
+    "csv-parse": "^7.0.1",
+    "playwright": "^1.61.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
