@@ -1,0 +1,169 @@
+//from variable data
+
+import {test, expect} from "@playwright/test"
+
+
+const testdata:string[] = ["laptop","monitor","giftcard"];
+
+for(const data from testdata){
+
+test(`testdata ${data}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("").fill(data);
+    await page.locator("").click();
+    await expect(page.locator("")).toBeVisible();
+})
+}
+
+testdata.forEach((data)=>{
+
+test(`testdata ${data}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("").fill(data);
+    await page.locator("").click();
+    await expect(page.locator("")).toBeVisible();
+})
+
+
+})
+
+
+// multi dimentional data
+import {test,expect} from "@playwright/test"
+
+
+const testdata:string[][]=[
+    ["joysondsouza@gmail.com","joys1234","valid","attempt_1"],
+    ["joysondsouza@gmail.com","joy123","invalid","attempt_2"]
+]
+
+for(const [email,password,validation,attempt] of testdata){
+
+    test(`testdata ${attempt}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("#email").fill(email)
+    await page.locator("#password").fill(password)
+    await page.locator("#login").click();
+
+    if(validation==="valid")
+    {
+          await expect(page.locator("logoutpage")).toBeVisible();
+    }
+    else
+    {
+          await expect(page.locator("loginpage")).toBeVisible();
+    }
+    
+})
+}
+
+// json data
+import{test,expect} from "@playwright/test"
+import fs from 'fs'
+
+const jsonpath = "file/path";
+const testdata = JSON.parse(fs.readFileSync(jsonpath,"utf-8"));
+
+for(const {email,password,validatiion,attempt} of testdata){
+
+    test(`testdata ${attempt}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("#email").fill(email)
+    await page.locator("#password").fill(password)
+    await page.locator("#login").click();
+
+    if(validation==="valid")
+    {
+          await expect(page.locator("logoutpage")).toBeVisible();
+    }
+    else
+    {
+          await expect(page.locator("loginpage")).toBeVisible();
+    }
+    
+})
+}
+
+// csv testdata
+
+npm install csv-parse
+
+import{test,expect} from "@playwright/test"
+import fs from "fs";
+import {parse} from "csv-parse/sync";
+
+interface logindata{
+    email:string;
+    passwrod:string;
+    validation:string;
+    attempt:string;
+}
+
+const csvpath = "file/path";
+const csvfolder= fs.readFileSync(csvpath,'utf-8');
+
+const records:logindata[] = parse(csvfolder,{
+    columns:true,
+    skipEmptyLines:true
+})
+
+
+for(const {email,password,validatiion,attempt} of testdata){
+
+    test(`testdata ${attempt}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("#email").fill(email)
+    await page.locator("#password").fill(password)
+    await page.locator("#login").click();
+
+    if(validation==="valid")
+    {
+          await expect(page.locator("logoutpage")).toBeVisible();
+    }
+    else
+    {
+          await expect(page.locator("loginpage")).toBeVisible();
+    }
+    
+})
+}
+
+nmp install xlsx
+
+// excel to json
+
+import{test,expect} from "@playwright/test"
+import fs from 'fs'
+import * as XLSX from 'xlsx'
+
+const excelpath = "file/path";
+const workbook = XLSX.readFile(excelpath);
+const sheetnames = workbook.Sheetnames[0];
+const worksheet = workbook.Sheets[sheetnames];
+
+const jsondata = XLSX.utils.sheet_to_json(workbook);
+for(const {email,password,validatiion,attempt} of testdata){
+
+    test(`testdata ${attempt}`,async({page})=>{
+
+    await page.goto("URL");
+    await page.locator("#email").fill(email)
+    await page.locator("#password").fill(password)
+    await page.locator("#login").click();
+
+    if(validation==="valid")
+    {
+          await expect(page.locator("logoutpage")).toBeVisible();
+    }
+    else
+    {
+          await expect(page.locator("loginpage")).toBeVisible();
+    }
+    
+})
+}
