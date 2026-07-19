@@ -115,7 +115,6 @@ const records:logindata[] = parse(csvfolder,{
 for(const {email,password,validatiion,attempt} of testdata){
 
     test(`testdata ${attempt}`,async({page})=>{
-
     await page.goto("URL");
     await page.locator("#email").fill(email)
     await page.locator("#password").fill(password)
@@ -147,7 +146,7 @@ const sheetnames = workbook.Sheetnames[0];
 const worksheet = workbook.Sheets[sheetnames];
 
 const jsondata = XLSX.utils.sheet_to_json(workbook);
-for(const {email,password,validatiion,attempt} of testdata){
+for(const {email,password,validation,attempt} of testdata){
 
     test(`testdata ${attempt}`,async({page})=>{
 
@@ -169,3 +168,58 @@ for(const {email,password,validatiion,attempt} of testdata){
 }
 
 done
+
+
+
+json data
+
+
+import fs from 'fs';
+
+const jsonpath = "file/path";
+const jsondata = JSON.parse(fs.readFileSync(jsonpath,'utf-8'));
+
+
+for(const {email,password,validation,attempt} of jsondata)
+{
+
+
+}
+
+
+npm install csv-parse
+
+import fs from 'fs';
+import {parse} from 'csv-parse/sync';
+
+interface logindata {
+    email:string;
+    passwrod:string;
+    validation:string;
+    attempt:string;
+}
+
+
+const csvpath = "file/path"
+const data = fs.readFileSync(csvpath,'utf-8');
+
+
+const records:logindata = parse(data,{
+    coulmns:true,
+    skipEmptyLines:true
+})
+
+
+for(const {email,password,validation,attempt} of records)
+
+
+
+import fs from 'fs';
+import * as xlsx from 'xlsx';
+
+const excelpath = "path";
+const workbook = XLSX.readFile(excelpath);
+const sheetnames = workbooks.Sheetnames[0];
+const worksheet = workbook.Sheets[sheetnames];
+
+const record = XLSX.utils.sheet_to_json(worksheet);
