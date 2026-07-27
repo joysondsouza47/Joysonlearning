@@ -224,4 +224,11 @@ const worksheet = workbook.Sheets[sheetnames];
 
 const record = XLSX.utils.sheet_to_json(worksheet);
 
-okay
+
+import{ test, expect} from "@playwright/test"
+
+test("title",async({page})=>{
+
+await page.goto("url");
+
+})
