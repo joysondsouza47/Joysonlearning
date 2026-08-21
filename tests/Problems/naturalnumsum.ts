@@ -19,4 +19,3 @@ console.log(`sum of 1st ${num} natural numbers is : ${sum}`)
 
 
 naturalnumsum(90);
-//coolL
