@@ -28,8 +28,7 @@ test("Verify page title",async ({page})=>{
    expect(title).toBe("Demo Web Shop");
 
 })
-
-//
+//////
 
 
 
